@@ -3,8 +3,7 @@ dotenv.config();
 import express from "express";
 import morgan from "morgan";
 import sequelize from "./db";
-import Role from "./models/role.model";
-import User from "./models/user.model";
+import authRouter from "./routes/auth.route";
 
 // Constants
 const IS_PRODUCTION = process.env.NODE_ENV == "production";
@@ -19,6 +18,9 @@ const PORT = process.env.PORT || 8080;
 // Express config
 const app = express();
 app.use(morgan(IS_PRODUCTION ? "combined" : "dev"));
+app.use(express.json());
+
+app.use("/api/auth", authRouter);
 
 app.get("/", async (_, res) => {
   res.send("Hello World!");
@@ -46,27 +48,27 @@ app.get("/", async (_, res) => {
   // // john
   // console.log(john);
 
-  const john = await User.findOne({
-    where: {
-      name: "john",
-    },
-  });
+  // const john = await User.findOne({
+  //   where: {
+  //     name: "john",
+  //   },
+  // });
 
-  const admin = await Role.create({
-    name: "ADMIN",
-    description: "Admin",
-  });
+  // const admin = await Role.create({
+  //   name: "ADMIN",
+  //   description: "Admin",
+  // });
 
-  const normal = await Role.findOne({
-    where: {
-      name: "NORMAL",
-    },
-  });
+  // const normal = await Role.findOne({
+  //   where: {
+  //     name: "NORMAL",
+  //   },
+  // });
 
-  john?.addRole(admin);
-  if (normal) {
-    john?.addRole(normal);
-  }
+  // john?.addRole(admin);
+  // if (normal) {
+  //   john?.addRole(normal);
+  // }
 });
 
 app.listen(PORT, () => {

@@ -11,6 +11,11 @@ import {
 import sequelize from "../db";
 import User from "./user.model";
 
+export enum RoleName {
+  NORMAL = "NORMAL",
+  ADMIN = "ADMIN",
+}
+
 interface RoleAttributes {
   id: number;
   name: string;
