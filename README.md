@@ -11,7 +11,6 @@ User {
   name: varchar
   auth_provider: varchar
   password: varchar, nullable
-  mantra_id: bigint, foreign key(Mantra)
 }
 
 Role {
@@ -27,7 +26,8 @@ UserRole {
 
 Mantra {
   id: bigint,
-  message: string
+  message: string,
+  user_id: bigint, foreign key(User)
 }
 ```
 
