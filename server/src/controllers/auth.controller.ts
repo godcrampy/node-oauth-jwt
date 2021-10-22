@@ -7,6 +7,7 @@ import {
 } from "../services/user.service";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { JwtPayload } from "../config/passport.config";
 
 const secret = process.env.JWT_SECRET || "SECRET";
 
@@ -30,10 +31,11 @@ export const login: RequestHandler = async (
     const isPasswordValid = bcrypt.compareSync(password, user.password);
 
     if (isPasswordValid) {
-      const token = jwt.sign({ email: user.email }, secret, {
+      const payload: JwtPayload = { email: user.email };
+      const token = jwt.sign(payload, secret, {
         expiresIn: "2 days",
       });
-      return res.send({ token, name: user.name, email: user.email });
+      return res.send({ token, ...user.toDAO() });
     }
 
     res.status(401).send({ err: "Email or Password incorrect" });

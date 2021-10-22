@@ -11,6 +11,7 @@ import {
   Model,
   Optional,
 } from "sequelize";
+import { UserDAO } from "../dao/user.dao";
 import sequelize from "../db";
 import Mantra from "./mantra.model";
 import Role from "./role.model";
@@ -50,6 +51,15 @@ class User
 
   public readonly mantra?: Mantra;
   public readonly roles?: Role[];
+
+  public toDAO(): UserDAO {
+    return {
+      id: this.id,
+      name: this.name,
+      email: this.email,
+      auth_provider: this.auth_provider,
+    };
+  }
 }
 
 User.init(

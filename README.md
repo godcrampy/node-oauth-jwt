@@ -40,3 +40,8 @@ Mantra {
 5. A `user` can view mantras of all other `user`s
 6. An `admin` can delete any `user`s mantra
 7. An `admin` can make another user `admin`
+
+## TODO
+
+- [ ] Logging
+- [ ] Unit Testing

@@ -31,3 +31,7 @@ export const getUserByEmail = async (email: string): Promise<User> => {
   if (user) return user;
   throw `Error: User with email ${email} does not exist`;
 };
+
+export const getAllUsers = async (): Promise<User[]> => {
+  return await User.findAll();
+};
