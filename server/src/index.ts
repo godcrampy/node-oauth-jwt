@@ -3,7 +3,7 @@ dotenv.config();
 import express from "express";
 import morgan from "morgan";
 import sequelize from "./db";
-import Mantra from "./models/mantra.model";
+import Role from "./models/role.model";
 import User from "./models/user.model";
 
 // Constants
@@ -21,7 +21,7 @@ const app = express();
 app.use(morgan(IS_PRODUCTION ? "combined" : "dev"));
 
 app.get("/", async (_, res) => {
-  // res.send("Hello World!");
+  res.send("Hello World!");
   // const john = await User.create({
   //   email: "john@doe.com",
   //   name: "john",
@@ -36,13 +36,37 @@ app.get("/", async (_, res) => {
 
   // console.log(john);
   // console.log(mantra);
+  // PART 2
+  // const john = await User.findOne({
+  //   where: {
+  //     name: "john"
+  //   }, include: Mantra
+  // });
+
+  // // john
+  // console.log(john);
+
   const john = await User.findOne({
     where: {
-      name: "john"
-    }, include: Mantra
+      name: "john",
+    },
   });
 
-  console.log(john);
+  const admin = await Role.create({
+    name: "ADMIN",
+    description: "Admin",
+  });
+
+  const normal = await Role.findOne({
+    where: {
+      name: "NORMAL",
+    },
+  });
+
+  john?.addRole(admin);
+  if (normal) {
+    john?.addRole(normal);
+  }
 });
 
 app.listen(PORT, () => {
