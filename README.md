@@ -44,4 +44,20 @@ Mantra {
 ## TODO
 
 - [ ] Logging
-- [ ] Unit Testing
+- [x] Unit Testing
+
+## Features
+
+### Frontend
+
+- Typescript
+- NextJs
+
+### Backend
+
+- Typescript
+- JWT
+- OAuth 2.0
+- joi
+- Jest Unit Testing
+- Sequelize
