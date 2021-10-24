@@ -11,7 +11,7 @@ export interface UserDAO {
 }
 
 abstract class Repository {
-  baseUrl: string = process.env.BASE_URL || "";
+  baseUrl = "http://localhost:8080";
 }
 
 export default Repository;

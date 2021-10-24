@@ -5,15 +5,13 @@ import { Input } from "baseui/input";
 import { Heading, HeadingLevel } from "baseui/heading";
 import { useStyletron } from "baseui";
 import { validateEmail } from "../util/string.util";
-import MockAuthRepository from "../repository/auth/MockAuthRepository";
-import AuthRepository from "../repository/auth/AuthRepository";
 import { Notification, KIND as NKIND } from "baseui/notification";
 import { SnackbarElement } from "baseui/snackbar";
 import { login } from "../util/auth.util";
 import { useRouter } from "next/router";
+import { authRepository } from "../repository/store";
 
 const EmailLoginForm = () => {
-  const authRepository: AuthRepository = new MockAuthRepository();
   const router = useRouter();
 
   const [css, theme] = useStyletron();

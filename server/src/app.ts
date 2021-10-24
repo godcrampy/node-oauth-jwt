@@ -8,6 +8,7 @@ import sequelize from "./db";
 import authRouter from "./routes/auth.route";
 import profileRouter from "./routes/profile.route";
 import userRouter from "./routes/user.route";
+import cors from "cors";
 
 // Constants
 const IS_PRODUCTION = process.env.NODE_ENV == "production";
@@ -20,6 +21,7 @@ const IS_PRODUCTION = process.env.NODE_ENV == "production";
 
 // Express config
 const app = express();
+app.use(cors());
 app.use(morgan(IS_PRODUCTION ? "combined" : "dev"));
 app.use(express.json());
 
