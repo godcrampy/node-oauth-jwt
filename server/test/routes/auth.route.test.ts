@@ -111,7 +111,7 @@ describe("Login Test", () => {
 });
 
 describe("Signup Test", () => {
-  test("Valid Login", (done) => {
+  test("Valid Signup", (done) => {
     request(app)
       .post("/api/auth/signup")
       .send({
