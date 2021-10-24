@@ -11,14 +11,15 @@ export const doesUserExistByEmail = async (email: string): Promise<boolean> => {
 export const createNormalUser = async (
   email: string,
   name: string,
-  password: string | null
+  password: string | null,
+  auth_provider: string
 ): Promise<User> => {
   // Assumes that user with email does not exist
   const normalRole = await getRoleByNameOrCreate(RoleName.NORMAL);
 
   const user = await User.create({
     name,
-    auth_provider: "email",
+    auth_provider,
     email,
     password,
   });

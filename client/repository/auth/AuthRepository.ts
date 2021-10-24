@@ -8,6 +8,8 @@ abstract class AuthRepository extends Repository {
   ): Promise<RepositoryResponse>;
 
   abstract login(name: string, password: string): Promise<RepositoryResponse>;
+
+  abstract googleAuth(tokenId: string): Promise<RepositoryResponse>;
 }
 
 export default AuthRepository;

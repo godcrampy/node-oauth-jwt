@@ -6,6 +6,7 @@ import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { BlockProps } from "baseui/block";
 import EmailLoginForm from "../components/LoginForm";
 import Navbar from "../components/Navbar";
+import GoogleLoginButton from "../components/GoogleLogin";
 
 const itemProps: BlockProps = {
   // backgroundColor: 'mono300',
@@ -35,6 +36,7 @@ const Home: NextPage = () => {
 
           <FlexGridItem {...itemProps}>
             <EmailLoginForm />
+            <GoogleLoginButton />
           </FlexGridItem>
         </FlexGrid>
       </div>

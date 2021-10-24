@@ -26,7 +26,8 @@ describe("Create normal user", () => {
     const user = await createNormalUser(
       "danny@example.com",
       "danny",
-      "badpassword"
+      "badpassword",
+      "email"
     );
     expect(user).toMatchObject({
       auth_provider: "email",
